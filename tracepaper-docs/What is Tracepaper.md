@@ -1,0 +1,9 @@
+Tracepaper by Draftsman is a powerful tool designed to simplify the complexities of building and deploying business applications. It targets small businesses and domain experts with deep industry knowledge who may not have a dedicated engineering team. Tracepaper enables them to create reliable SaaS products without the technical obstacles that often accompany traditional development methods.
+
+One of the primary features of Tracepaper is its focus on serverless architecture, particularly through AWS services. This helps users reduce the operational burdens associated with managing infrastructure, such as performance optimization, access control, and backups. While serverless architectures come with certain challenges, like dealing with distributed system designs and security concerns, Tracepaper manages these complexities. As a result, users can focus on their core business without worrying about technical details.
+
+Inspired by Domain-Driven Design (DDD) principles, Tracepaper allows users to model their domain in a way that makes sense to them. Using intuitive visual elements, users can define API endpoints, domain behaviors, and materialized views. Within these elements, they can model their business logic and integrate custom Python code if needed. The model is automatically converted into a Python project, defined with CloudFormation, making it directly deployable within the user’s AWS environment. Additionally, both the model and the generated project are stored in the user’s GitHub account, ensuring full control and ownership.
+
+  
+
+In summary, Tracepaper provides a comprehensive solution for small businesses and domain experts who want to develop and deploy business applications without the technical complexities that often come with traditional development methods.
