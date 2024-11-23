@@ -1,5 +1,5 @@
 ---
-title: Tracepaper docs
+title: Home
 ---
 **Tracepaper** A domain modeling approach to low-code.
 
