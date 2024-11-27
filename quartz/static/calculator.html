@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Cost Estimator</title>
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css" rel="stylesheet">
+    <style>
+        body {
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="p-4" x-data="{data: $persist({
+    timeframeValue: 1,
+    timeframeUnit: 'hours',
+    readsPerSecond: 10,
+    writesPerSecond: 10,
+    extraPessimistic: false,
+    totalReads: 0,
+    totalWrites: 0,
+    totalCost: 0})
+}">
+<div class="max-w-sm mx-auto p-4" x-effect="calculateCosts(data)">
+    <table class="table table-compact">
+        <tr>
+            <th colspan="3" class="text-center text-lg">
+                Runtime Cost Estimator
+            </th>
+        </tr>
+        <tr>
+            <th>Timeframe</th>
+            <td>
+                <input type="number" class="input input-xs input-bordered w-16" placeholder="1"
+                       x-model="data.timeframeValue" min="1">
+            </td>
+            <td>
+                <select class="select select-xs select-bordered"
+                        x-model="data.timeframeUnit">
+                    <option value="seconds">Seconds</option>
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                    <option value="days">Days</option>
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>GraphQL queries per Second</th>
+            <td colspan="1"><input type="number" class="input input-xs input-bordered w-full" placeholder="e.g., 1000"
+                                   x-model="data.readsPerSecond"></td>
+            <td>
+                <span x-text="data.totalReads"></span> queries in total.
+            </td>
+        </tr>
+        <tr>
+            <th>GraphQL mutations per Second</th>
+            <td colspan="1"><input type="number" class="input input-xs input-bordered w-full" placeholder="e.g., 1000"
+                                   x-model="data.writesPerSecond"></td>
+            <td>
+                <span x-text="data.totalWrites"></span> mutations in total.
+            </td>
+        </tr>
+        <!--        <tr>-->
+        <!--            <td colspan="3">-->
+        <!--                <label class="cursor-pointer flex items-center space-x-2">-->
+        <!--                    <input type="checkbox" class="checkbox checkbox-xs" x-model="data.extraPessimistic">-->
+        <!--                    <span>Be extra pessimistic (+10%)</span>-->
+        <!--                </label>-->
+        <!--            </td>-->
+        <!--        </tr>-->
+        <tr>
+            <th>Estimated Cost</th>
+            <td colspan="2" class="text-right font-bold text-xl">€<span x-text="data.totalCost"></span></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="text-sm text-gray-600">
+                <p>
+                    <b>Your mileage may vary</b> depending on your application's logic. Estimates are rounded up to account for pessimism.<br>
+                    Consider this a "ballpark" estimate rather than an exact calculation to determine if the Tracepaper architecture<br>
+                    is fitting for your use case.<br>
+                    <a href="https://aws.amazon.com/cognito/pricing/" target="_blank" class="link">Monthly active user costs</a> are not included in this calculation.<br>
+                    An idle application with no load will cost approximately $0.45 per month.
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    function calculateCosts(data) {
+        const PRICING = {
+            appsyncQuery: 4, // per million queries
+            dynamoDBRead: 0.1525, // per 1 million read units
+            dynamoDBWrite: 0.7625, // per 1 million write units
+            lambdaExecution: 1.87, // per 1 million executions based on 1GB and 100ms execution
+            eventBridge: 1.00, // per 1 million events
+            dynamoDBTransaction: 0.7625 * 2 // per 1 million transactional write units
+        };
+
+        const timeMultiplier = {
+            seconds: 1,
+            minutes: 60,
+            hours: 3600,
+            days: 3600 * 24,
+            months: 3600 * 24 * 30,
+            years: 3600 * 24 * 365
+        }[data.timeframeUnit] * data.timeframeValue;
+
+        const appsyncReads = data.readsPerSecond * timeMultiplier;
+        data.totalReads = appsyncReads;
+        const dynamoDBReads = data.readsPerSecond * timeMultiplier * 2; // multiplied by 2 for "heavy" reads
+        const appsyncWrites = data.writesPerSecond * timeMultiplier;
+        data.totalWrites = appsyncWrites;
+        const eventBridgeWrites = data.writesPerSecond * timeMultiplier;
+        const dynamoDBWritesWithTransaction = data.writesPerSecond * 4 * timeMultiplier;
+        const dynamoDBWritesWithoutTransaction = data.writesPerSecond * timeMultiplier;
+        const lambdaWrites = data.writesPerSecond * 5 * timeMultiplier;
+
+        let totalCost =
+            (appsyncReads / 1_000_000) * PRICING.appsyncQuery +
+            (dynamoDBReads / 1_000_000) * PRICING.dynamoDBRead +
+            (appsyncWrites / 1_000_000) * PRICING.appsyncQuery +
+            (eventBridgeWrites / 1_000_000) * PRICING.eventBridge +
+            (dynamoDBWritesWithTransaction / 1_000_000) * PRICING.dynamoDBTransaction +
+            (dynamoDBWritesWithoutTransaction / 1_000_000) * PRICING.dynamoDBWrite +
+            (lambdaWrites / 1_000_000) * PRICING.lambdaExecution;
+
+        if (data.extraPessimistic) {
+            totalCost *= 1.1; // Add 10% to the total cost
+        }
+
+        data.totalCost = totalCost.toFixed(2);
+    }
+</script>
+</body>
+</html>
