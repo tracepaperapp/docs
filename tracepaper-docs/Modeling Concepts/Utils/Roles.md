@@ -1,0 +1,2 @@
+
+Simply a list of role names available in the modeler, at this moment these roles are not automatically loaded into the the IAM system by Draftsman. The application owner needs to define these roles manually, or model an automation (@afterDeployment) that creates these roles.

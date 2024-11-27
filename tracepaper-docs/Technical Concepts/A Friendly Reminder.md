@@ -36,9 +36,9 @@ Here’s an example of what Tracepaper handles in our own test model:
 - **3** [[Projection|Projections]]
 - **22** black-box API [[Scenario|Test Scenarios]]
 
-This entire model is described in our [[domain specific language]] as **8,698 lines of XML**, which is then converted into **63,836 lines of code**:
+This entire model is described in our [[Domain Specific Language]] as **8,698 lines of XML**, which is then converted into **63,836 lines of code**:
 
-- **17,617 lines of Python**: Primarily reflecting your functional domain, with ~2,000 lines for the [[technical platform]].
+- **17,617 lines of Python**: Primarily reflecting your functional domain, with ~2,000 lines for the [[Technical Platform]].
 - **20,590 lines of CloudFormation**: [[Infrastructure as Code]] that connects everything.
 - **22,629 lines of test code**: Representing the 150 behavior tests.
 - **3,039 lines of Quality Gate instructions**: Representing the 22 test scenarios.
@@ -51,7 +51,7 @@ This entire model is described in our [[domain specific language]] as **8,698 li
 
 ## "This all looks very complex"
 
-Yes, because it is. A lot of the complexity stems from our choice to optimize for a [[Serverless Architecture]] to reduce runtime costs and operational overhead. Read [[The Story Behind Tracepaper]] to understand how we came to the Tracepaper Architecture.
+Yes, because it is. A lot of the complexity stems from our choice to optimize for a [[Serverless Architecture]] to reduce runtime costs and operational overhead. Read [[01 Introduction|The Story Behind Tracepaper]] to understand how we came to the Tracepaper Architecture.
 
 ### Cost estimator
 
