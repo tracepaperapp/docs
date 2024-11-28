@@ -23,7 +23,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.TagList(),
   ],
   left: [
-    //Component.PageTitle(),
+    Component.DesktopOnly(Component.PageTitle()),
     Component.MobileOnly(Component.Menu()),
     Component.MobileOnly(Component.Spacer()),
     Component.MobileOnly(Component.ModalFullPage(Component.Explorer({ folderDefaultState: "open" }))),
