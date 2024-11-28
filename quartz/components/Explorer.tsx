@@ -44,9 +44,12 @@ export default ((userOpts?: Partial<Options>) => {
   // memoized
   let fileTree: FileNode
   let jsonTree: string
-  let lastBuildId: string = ""
 
   function constructFileTree(allFiles: QuartzPluginData[]) {
+    if (fileTree) {
+      return
+    }
+
     // Construct tree from allFiles
     fileTree = new FileNode("")
     allFiles.forEach((file) => fileTree.add(file))
@@ -54,8 +57,7 @@ export default ((userOpts?: Partial<Options>) => {
     // Execute all functions (sort, filter, map) that were provided (if none were provided, only default "sort" is applied)
     if (opts.order) {
       // Order is important, use loop with index instead of order.map()
-      for (let i = 0; i < opts.order.length; i++) {
-        const functionName = opts.order[i]
+      for (const functionName of opts.order) {
         if (functionName === "map") {
           fileTree.map(opts.mapFn)
         } else if (functionName === "sort") {
@@ -73,19 +75,16 @@ export default ((userOpts?: Partial<Options>) => {
   }
 
   const Explorer: QuartzComponent = ({
-    ctx,
     cfg,
     allFiles,
     displayClass,
+    className,
+    specialId,
     fileData,
   }: QuartzComponentProps) => {
-    if (ctx.buildId !== lastBuildId) {
-      lastBuildId = ctx.buildId
-      constructFileTree(allFiles)
-    }
-
+    constructFileTree(allFiles)
     return (
-      <div class={classNames(displayClass, "explorer")}>
+      <div id={specialId ?? "explorer"} className={classNames(displayClass, "explorer", className)}>
         <button
           type="button"
           id="explorer"
@@ -93,10 +92,8 @@ export default ((userOpts?: Partial<Options>) => {
           data-collapsed={opts.folderDefaultState}
           data-savestate={opts.useSavedState}
           data-tree={jsonTree}
-          aria-controls="explorer-content"
-          aria-expanded={opts.folderDefaultState === "open"}
         >
-          <h2>{opts.title ?? i18n(cfg.locale).components.explorer.title}</h2>
+          <h1>{opts.title ?? i18n(cfg.locale).components.explorer.title}</h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"
