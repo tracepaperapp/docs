@@ -5,8 +5,8 @@ The View domain within the architecture serves the primary function of providing
 
 - **Projection of Truth**: Views in the architecture are designed to project the truth of the system's state into optimized read models. While the command side focuses on recording domain events and maintaining the system's state, the view side is concerned with interpreting this state for query purposes.
     
-- **Materialized Views**: These are pre-computed views optimized for specific querying needs. Materialized views store aggregated or transformed data in a way that enhances query performance, enabling faster retrieval compared to recalculating data on the fly.
-    
+- **[[View|Materialized Views]]**: These are pre-computed views optimized for specific querying needs. Materialized views store aggregated or transformed data in a way that enhances query performance, enabling faster retrieval compared to recalculating data on the fly.
+- **[[Projection|Projections]]**: This concept provides on-the-fly transformations using data from materialized views & input.
 - **Decoupling of Models**: The View domain decouples the read model from the write model. This separation allows flexibility in how data is structured and queried, accommodating different perspectives and needs without affecting the core data integrity.
     
 
@@ -16,7 +16,7 @@ The View domain within the architecture serves the primary function of providing
     
 - **Functional Keys**: Unlike technical keys used in the write model, views often employ functional keys that can evolve over time to meet changing business requirements. This flexibility allows the system to adapt to new data access patterns without disrupting existing operations.
     
-- **Just in time Projection**: The core concept of a projection involves dynamically transforming and combining data from various sources, such as materialized views and user inputs, to generate specialized views in real-time. Projections facilitate tasks like aggregating multiple materialized views, applying advanced filters based on user criteria, and performing calculations using both user-provided data and precomputed views. This dynamic approach enables responsive and flexible querying, ensuring that applications can deliver tailored data views efficiently without relying solely on precomputed results.
+- **Just in time [[Projection]]**: The core concept of a [[projection]] involves dynamically transforming and combining data from various sources, such as materialized views and user inputs, to generate specialized views in real-time. Projections facilitate tasks like aggregating multiple materialized views, applying advanced filters based on user criteria, and performing calculations using both user-provided data and precomputed views. This dynamic approach enables responsive and flexible querying, ensuring that applications can deliver tailored data views efficiently without relying solely on precomputed results.
     
 
 ## Benefits

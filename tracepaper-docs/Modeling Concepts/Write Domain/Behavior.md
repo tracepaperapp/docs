@@ -1,20 +1,20 @@
 ## Overview
 
-Behavior flows define the lifecycle and interactions of aggregates within a system. They encapsulate the business logic required to handle events and commands, ensuring consistent state transitions and proper handling of complex workflows. By defining how an aggregate responds to various inputs, behavior flows help maintain system integrity and align with business rules.
+Behavior flows define the lifecycle and interactions of aggregates within a system. They encapsulate the business logic required to handle events and commands, ensuring consistent state transitions and proper handling of complex workflows. By defining how an [[aggregate]] responds to various inputs, behavior flows help maintain system integrity and align with business rules.
 
 ## General
 
-Behavior is a response to an event emited within the domain this may be an ActorEvent (Command) or a DomainEvent (From an other entity), which can lead to changes in the state of an aggregate.
+Behavior is a response to an event emited within the domain this may be an ActorEvent ([[Command]]) or a DomainEvent (From an other entity), which can lead to changes in the state of an [[aggregate]].
 
-- **Name**: A unique identifier for the command.
-- **Create Command**: (Optional) Indicates if this should be the initial behavior of a new instance of the aggregate. If the instance with the specific business key is already present in the database the execution will fail.
+- **Name**: A unique identifier for the behavior flow.
+- **Create Command**: (Optional) Indicates if this should be the initial behavior of a new instance of the [[aggregate]]. If the instance with the specific business key is already present in the database the execution will fail.
 
 ## Trigger
 
-A trigger specifies the conditions under which a command is activated. It listens for specific events and uses the data from these events to execute the corresponding behavior flow.
+A trigger specifies the conditions under which a behavior is activated. It listens for specific events and uses the data from these events to execute the corresponding behavior flow.
 
-- **Source**: The event that activates the command.
-- **Key Field**: The primary field used to correlate the incoming event with the correct aggregate instance.
+- **Source**: The event that activates the behavior.
+- **Key Field**: The primary field used to correlate the incoming event with the correct [[aggregate]] instance.
 - **Mapping**: Transfers data from the event to the flow variable fields. Optionally event-fields can be marked as `part of the idempotency key` giving you the ability to model functional idempotency.
 
 ## Processors
@@ -41,25 +41,25 @@ The `set-variable` processor assigns values to variables (in memory) within th
 
 ## Update Key
 
-The `update-key` processor updates the business key of an aggregate instance. This is useful for operations that require changing the identifier or key used to access an aggregate instance. This processor type includes the field in the aggregate to be updated, and the new value to be assigned to the key field.
+The `update-key` processor updates the business key of an [[aggregate]] instance. This is useful for operations that require changing the identifier or key used to access an [[aggregate]] instance. This processor type includes the field in the [[aggregate]] to be updated, and the new value to be assigned to the key field.
 
 ## Test Case
 
-Test cases validate the behavior of a command by defining inputs, expected domain events, and resulting state changes. They ensure that the command performs as intended and that the aggregate's state transitions correctly.
+Test cases validate the behavior by defining inputs, expected domain events, and resulting state changes. They ensure that the behavior performs as intended and that the [[aggregate]]'s state transitions correctly.
 
 - **Name**: A unique identifier for the test case.
 - **Trigger Event**: The event that initiates the test case.
-- **Input**: Defines the input data for the command.
+- **Input**: Defines the input data for the behavior.
     - **Name**: The name of the input field.
     - **Value**: The value assigned to the input field.
     - **Type**: The data type of the input field.
-- **Expected Domain Event**: Specifies the expected event to be emitted by the command.
+- **Expected Domain Event**: Specifies the expected event to be emitted by the behavior.
     - **Field**: Defines the expected values for fields in the emitted event.
-- **State**: (Optional) The initial state of the aggregate before executing the command.
-- **Expected State**: The expected state of the aggregate after executing the command.
-    - **Primary Key (pk)**: The key identifying the aggregate instance.
-    - **State Data**: The expected state data of the aggregate.
+- **State**: (Optional) The initial state of the [[aggregate]] before executing the behavior.
+- **Expected State**: The expected state of the [[aggregate]] after executing the behavior.
+    - **Primary Key (pk)**: The key identifying the [[aggregate]] instance.
+    - **State Data**: The expected state data of the [[aggregate]].
 
 ## Summary
 
-Behavior flows are essential for managing the lifecycle and interactions of aggregates. By defining commands, triggers, mappings, processors, and test cases, behavior flows ensure that business logic is consistently applied, state transitions are correctly managed, and the system's behavior aligns with the intended domain model. Understanding and modeling behavior flows are crucial for implementing robust, maintainable, and scalable systems.
+Behavior flows are essential for managing the lifecycle and interactions of aggregates. By defining behaviors, triggers, mappings, processors, and test cases, behavior flows ensure that business logic is consistently applied, state transitions are correctly managed, and the system's behavior aligns with the intended domain model. Understanding and modeling behavior flows are crucial for implementing robust, maintainable, and scalable systems.

@@ -19,7 +19,7 @@ The **Draftsman Technical Platform** serves as the runtime environment that supp
 - **wrappers.py**: Includes utility wrappers for simplifying interactions with various components.
 - **utils.py**: Contains helper functions and utilities used across the platform.
 
-### 4. **View and Projection Handling**
+### 4. **[[View]] and [[Projection]] Handling**
 - **Views.py**: Manages the creation and maintenance of materialized views for efficient querying.
 - **ViewStoreApi.py**: Exposes an API for interacting with stored views.
 

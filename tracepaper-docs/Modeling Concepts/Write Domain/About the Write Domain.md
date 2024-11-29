@@ -16,7 +16,7 @@ Subdomains help to organize and structure the Write Domain by grouping related a
 
 ### Aggregates
 
-Aggregates are a fundamental concept within the Write Domain that represent a cluster of related objects treated as a single unit for data changes. Each aggregate has a document model that represents state with a defined boundary that ensures the consistency of its data changes. Aggregates encapsulate both data and behavior, providing a clear structure for managing complex business logic.
+Aggregates are a fundamental concept within the Write Domain that represent a cluster of related objects treated as a single unit for data changes. Each [[aggregate]] has a document model that represents state with a defined boundary that ensures the consistency of its data changes. Aggregates encapsulate both data and behavior, providing a clear structure for managing complex business logic.
 
 ### Behavior Flows
 

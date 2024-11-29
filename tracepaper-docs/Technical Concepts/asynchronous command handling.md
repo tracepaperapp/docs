@@ -3,7 +3,7 @@ title: Asynchronous Command Handling
 ---
 ## Overview
 
-Our application utilizes an asynchronous command handling system through AWS AppSync. When a client sends a command (via GraphQL mutation), it is accepted and dispatched asynchronously, providing a trace ID for monitoring purposes. This approach ensures robust and responsive user interactions, accommodating the inherent challenges of distributed systems.
+Our application utilizes an asynchronous [[command]] handling system through AWS AppSync. When a client sends a [[command]] (via GraphQL mutation), it is accepted and dispatched asynchronously, providing a trace ID for monitoring purposes. This approach ensures robust and responsive user interactions, accommodating the inherent challenges of distributed systems.
 
 ## Process Flow
 

@@ -26,13 +26,13 @@ Specifies the access control for the projection. The following methods are suppo
 
 ### Return Object
 
-References a view model that defines the structure of the data returned by the projection.
+References a [[view]] model that defines the structure of the data returned by the projection.
 
 ### Return Type
 
 Specifies whether the projection returns a single item or a result set. The possible values are:
 
-- **item**: Returns a single instance of the view.
+- **item**: Returns a single instance of the [[view]].
 - **result_set**: Returns a list of instances.
 
 ## Arguments
@@ -62,7 +62,7 @@ Specifies whether the query variable is mandatory for the projection to execute.
 
 ## Data Preparation Logic
 
-The core logic for preparing data in a projection is written in Python. This logic involves accessing materialized views, applying filters, and transforming data as needed. The following example demonstrates how to implement the data preparation logic:
+The core logic for preparing data in a projection is written in Python. This logic involves accessing [[View|materialized views]], applying filters, and transforming data as needed. The following example demonstrates how to implement the data preparation logic:
 
 ```python
 from draftsman.ViewStoreApi import Query
@@ -102,13 +102,13 @@ def transform(arguments, username):
 
 ## Fluent API
 
-The Fluent API, which allows you to query and filter data from the DynamoDB view store in a flexible and efficient manner.
+The Fluent API, which allows you to query and filter data from the DynamoDB [[view]] store in a flexible and efficient manner.
 
 The Fluent API provides a convenient way to construct and execute queries against the DynamoDB view-store-table. It supports various filtering methods and allows for the retrieval of individual items or sets of items based on specified criteria.
 
 ### Initialization
 
-To start using the Fluent API, you need to initialize the `Query` class with the type of view you want to query.
+To start using the Fluent API, you need to initialize the `Query` class with the type of [[view]] you want to query.
 
 ```python
 from draftsman.ViewStoreApi import Query

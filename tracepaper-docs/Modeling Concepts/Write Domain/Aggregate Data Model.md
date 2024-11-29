@@ -4,9 +4,9 @@ The data model consists of two parts, the actual part: the **events**, and the 
 
 The document is a projection of the data, a mental model of the state so that we can implement validations in the behavior to ensure data integrity. Because it is a projection, this model can evolve over time without manipulating the underlying data. Events from the past are immutable by definition.
 
-Thus, the document serves both as a mental model for ourselves on how we want to think about state and as a way to model how we present data to the viewstore. It is the data contract between the aggregate and the viewstore.
+Thus, the document serves both as a mental model for ourselves on how we want to think about state and as a way to model how we present data to the viewstore. It is the data contract between the [[aggregate]] and the viewstore.
 
-**One of the document fields (String) will serve as the business key of the aggregate instance**
+**One of the document fields (String) will serve as the business key of the [[aggregate]] instance**
 
 ## The Events
 
@@ -24,7 +24,7 @@ Views will be discussed later, but regarding the contract, the viewstore essenti
 
 ### Store As Is
 
-Essentially caching a snapshot of the aggregate state. In this case, the internal model becomes publicly accessible, being queryable and read-optimized.
+Essentially caching a snapshot of the agregate state. In this case, the internal model becomes publicly accessible, being queryable and read-optimized.
 
 ### Enrich and Store
 
@@ -32,4 +32,4 @@ Enrichment can take various forms, such as combining data from different aggrega
 
 ### Enrich During Data Reading
 
-Modifying the API response before it is sent to the client. This involves executing logic on the combination of request data and cached data. Essentially, this is an on-the-fly projection where the view model is virtual. The logic has access to the request data and a fluent API to the viewstore, allowing the creation of a response object using Python scripting from this combination.
+Modifying the API response before it is sent to the client. This involves executing logic on the combination of request data and cached data. Essentially, this is an on-the-fly projection where the [[view]] model is virtual. The logic has access to the request data and a fluent API to the viewstore, allowing the creation of a response object using Python scripting from this combination.

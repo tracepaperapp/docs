@@ -12,7 +12,7 @@ def behavior_or_notifier_function(flow):
     # And has access to flow variables
     print(flow.myVariable)
 
-    # And has also access to the aggregate document
+    # And has also access to the [[aggregate]] document
     print(flow.entity)
     print(flow.entity.entityField)
 ```

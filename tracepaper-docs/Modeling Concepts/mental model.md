@@ -18,6 +18,7 @@ Tracepaper encourages you to develop clear and aligned mental models to:
 When working with Tracepaper, mental models often come into play when:
 
 • Mapping functional concepts to implementation (e.g., how aggregates and commands in a domain-driven design reflect the functional requirements).
+
 • Designing systems like [[CQRS]] architectures or [[GraphQL API]]s.
 
   
@@ -25,8 +26,10 @@ When working with Tracepaper, mental models often come into play when:
 
 Tracepaper simplifies technical concerns, enabling you to focus on:
 
-• **Access patterns**: How users or systems interact with data.
-• **Data consistency**: How data integrity is maintained across operations.
-• **Relationships**: Identifying which concepts are tightly coupled and which are independent.
+• **Access patterns**: How users or systems interact with data. 
+
+• **Data consistency**: How data integrity is maintained across operations. 
+
+• **Relationships**: Identifying which concepts are tightly coupled and which are independent. 
 
 By abstracting technical complexities like [[AWS DynamoDB]] design or [[AWS Cognito]] configuration, Tracepaper allows you to refine your mental model without being bogged down by implementation details.

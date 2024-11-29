@@ -11,7 +11,7 @@ In **Tracepaper**, Event Sourcing is central to how state changes occur. It enab
 
 ### How Event Sourcing Works in Tracepaper
 
-1. **Domain Event Schema**:
+1. **[[Aggregate Data Model#The Events|Domain Event Schema]]**:
    - Events are defined within the **aggregate** as simple data models.
    - Each event has a unique name (e.g., `UserCreated`) and a collection of attributes (e.g., `String`, `Boolean`).
    - Default values ensure backward compatibility when events evolve.

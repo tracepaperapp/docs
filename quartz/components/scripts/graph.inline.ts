@@ -490,32 +490,42 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     }
   }
 
-  if (enableZoom) {
-    select<HTMLCanvasElement, NodeData>(app.canvas).call(
-      zoom<HTMLCanvasElement, NodeData>()
-        .extent([
-          [0, 0],
-          [width, height],
-        ])
-        .scaleExtent([0.25, 4])
-        .on("zoom", ({ transform }) => {
-          currentTransform = transform
-          stage.scale.set(transform.k, transform.k)
-          stage.position.set(transform.x, transform.y)
+if (enableZoom) {
+  const initialScale = scale // Adjust this value to zoom in more or less
 
-          // zoom adjusts opacity of labels too
-          const scale = transform.k * opacityScale
-          let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
-          const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
+  const zoomBehavior = zoom<HTMLCanvasElement, NodeData>()
+    .extent([
+      [0, 0],
+      [width, height],
+    ])
+    .scaleExtent([0.25, 4])
+    .on("zoom", ({ transform }) => {
+      currentTransform = transform
+      stage.scale.set(transform.k, transform.k)
+      stage.position.set(transform.x, transform.y)
 
-          for (const label of labelsContainer.children) {
-            if (!activeNodes.includes(label)) {
-              label.alpha = scaleOpacity
-            }
-          }
-        }),
-    )
-  }
+      // zoom adjusts opacity of labels too
+      const scale = transform.k * opacityScale
+      let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
+      const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
+
+      for (const label of labelsContainer.children) {
+        if (!activeNodes.includes(label)) {
+          label.alpha = scaleOpacity
+        }
+      }
+    })
+
+  // Apply initial zoom transform
+  const initialTransform = zoomIdentity
+    .translate(width / 2, height / 2)
+    .scale(initialScale)
+    .translate(-width / 2, -height / 2)
+
+  select<HTMLCanvasElement, NodeData>(app.canvas)
+    .call(zoomBehavior)
+    .call(zoomBehavior.transform, initialTransform)
+}
 
   function animate(time: number) {
     for (const n of nodeRenderData) {

@@ -1,8 +1,8 @@
 
 The key expression is usable in all identity-based triggers:
 
-- Aggregate behavior flows
-- View data sources
+- [[Behavior|Aggregate behavior flows]]
+- [[View#Data Mapping|View data sources]]
 
 It is used to convert an event attribute into a functional key. The name of the expression, e.g., **truncateArn**, is used to access this expression from a behavior or data-source model.
 

@@ -43,7 +43,12 @@ export const defaultContentPageLayout: PageLayout = {
       })),
   ],
   right: [
-    Component.Graph(),
+    Component.Graph({
+        localGraph: {
+            scale: 2,
+            fontSize: 0.6
+        }
+    }),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],

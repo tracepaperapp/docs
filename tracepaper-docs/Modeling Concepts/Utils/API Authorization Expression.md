@@ -3,11 +3,11 @@
 The authorization expression can be used in all components exposed in the API:
 
 - Commands
-- View queries
+- [[View#GraphQL Queries|View queries]]
 
-It is used to convert an input parameter (command field or query filter field, e.g., key, key_begins_with, or a custom filter attribute) to a technical role that the API resolver will validate to determine if the requester has the specific role. This is useful for providing role-based access in a multi-tenant system.
+It is used to convert an input parameter ([[command]] field or query filter field, e.g., key, key_begins_with, or a custom filter attribute) to a technical role that the API resolver will validate to determine if the requester has the specific role. This is useful for providing role-based access in a multi-tenant system.
 
-The expression has a **name**, e.g., `extractRoleFromArn`, which is used to access the expression from command models or view models.
+The expression has a **name**, e.g., `extractRoleFromArn`, which is used to access the expression from [[command]] models or [[view]] models.
 
 You model inputs for this function separated with a **;** e.g.,
 
@@ -21,7 +21,7 @@ And then use Velocity Template Language (VTL) syntax with basic JavaScript to mo
 ${arn.split(':')[0]}:${arn.split(':')[1]}:role
 ```
 
-In a command or view query, you can use this expression in the role field when you select role-based access:
+In a [[command]] or [[View#GraphQL Queries|view query]], you can use this expression in the role field when you select role-based access:
 
 ```plaintext
 #global.extractRoleFromArn(key, 'viewer')

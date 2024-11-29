@@ -13,7 +13,7 @@ Functional scenarios are defined and describe a sequence of actions and validati
 The model supports the following actions:
 
 - **Grant Role to Test User**: Assigns a specific role to the current test user.
-- **Execute Mutation**: Performs a mutation (command) to change the state of the application.
+- **Execute Mutation**: Performs a mutation ([[command]]) to change the state of the application.
 - **Validate Behavior and Automations**: Checks that expected behavior flows and automations execute with a defined status (success/error).
 - **Validate View Queries**: Ensures that queries return the expected data and allows extraction of data for use in later actions.
 - **Define Variables**: Sets variables for use in other actions within the scenario.

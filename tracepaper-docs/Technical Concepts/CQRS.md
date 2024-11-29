@@ -1,10 +1,10 @@
 ## What is CQRS?
 
-Command Query Responsibility Segregation (CQRS) is a design pattern that separates read (query) and write (command) operations into distinct models. This segregation allows for optimized and scalable handling of commands and queries.
+Command Query Responsibility Segregation (CQRS) is a design pattern that separates read (query) and write ([[command]]) operations into distinct models. This segregation allows for optimized and scalable handling of commands and queries.
 
 ### Key Principles of CQRS
 
-- **Commands**: Modify the state of the application. Each command represents an action or a change.
+- **Commands**: Modify the state of the application. Each [[command]] represents an action or a change.
 - **Queries**: Retrieve information without modifying the state. Queries are optimized for read operations.
 
 ## Benefits of CQRS
@@ -36,11 +36,11 @@ CQRS stands for **Command Query Responsibility Segregation**, a pattern that sep
 
 In Tracepaper:
 
-- **Commands** are modeled as GraphQL API mutations, including a message schema, API path, and authorization method. These commands are converted into asynchronous events that trigger aggregate behavior flows or automations. Commands may lead to a domain event that updates the internal state.
+- **Commands** are modeled as GraphQL API mutations, including a message schema, API path, and authorization method. These commands are converted into asynchronous events that trigger [[aggregate]] behavior flows or automations. Commands may lead to a domain event that updates the internal state.
 
-- The **aggregate document** acts as an in-memory view model, representing the state and supporting the command model by enabling business rule execution to determine if a domain event (state change) should be issued. 
+- The **[[Aggregate Data Model#The Document|aggregate document]]** acts as an in-memory view model, representing the state and supporting the command model by enabling business rule execution to determine if a domain event (state change) should be issued. 
 
-- This internal view model serves a secondary purpose: providing data for the **external query model**. It is mapped to an external format and stored in a query-optimized database.
+- This internal view model serves a secondary purpose: providing data for the **[[View|external query model]]**. It is mapped to an external format and stored in a query-optimized database.
 
 - The query model data is exposed via GraphQL queries with defined schemas, paths, and authorization methods.
 
