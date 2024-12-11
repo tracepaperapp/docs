@@ -10,3 +10,5 @@
 **Documentation**: [AWS DynamoDB Documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
 
 **Service Limits**: [DynamoDB Service Limits](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+
+**Price reduction november 2024:** [Amazon DynamoDB reduces prices for on-demand throughput and global tables](https://aws.amazon.com/about-aws/whats-new/2024/11/amazon-dynamo-db-reduces-prices-on-demand-throughput-global-tables/)
