@@ -96,7 +96,7 @@ def transform(arguments, username):
         'key', 0, 100).run()
 
     # Program data transformations with Python
-    # Ensure you add all fields that are defined in the return view object definition
+    # Ensure you add all fields that are defined in the return [[view]] object definition
     return {"field_name": "value"}
 ```
 
@@ -113,7 +113,7 @@ To start using the Fluent API, you need to initialize the `Query` class with t
 ```python
 from draftsman.ViewStoreApi import Query
 
-# Initialize a query for a specific view name
+# Initialize a query for a specific [[view]] name
 query = Query("YourViewName")
 ```
 

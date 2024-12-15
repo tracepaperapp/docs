@@ -21,7 +21,7 @@ In **Tracepaper**, Event Sourcing is central to how state changes occur. It enab
    - Root attributes use simple operations like `set/add/subtract`, while nested collections are stored as dictionaries with business keys for easy retrieval.
 
 3. **Event Store**:
-   - The **Event Store** (using AWS DynamoDB) is the single source of truth. It ensures redundancy and provides features like point-in-time recovery.
+   - The **Event Store** (using [[AWS DynamoDB]]) is the single source of truth. It ensures redundancy and provides features like point-in-time recovery.
    - Configuration options, such as event time-to-live (TTL) and key management, abstract technical complexities, allowing you to focus on functional modeling.
 
 ---
@@ -59,4 +59,4 @@ In **Tracepaper**, Event Sourcing is central to how state changes occur. It enab
 To deepen your understanding of Event Sourcing:
 - [Martin Fowler's Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html)
 - [Microsoft Event Sourcing Pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing)
-- [AWS DynamoDB Documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+- [[[AWS DynamoDB]] Documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)

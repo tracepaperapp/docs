@@ -15,7 +15,7 @@ The model supports the following actions:
 - **Grant Role to Test User**: Assigns a specific role to the current test user.
 - **Execute Mutation**: Performs a mutation ([[command]]) to change the state of the application.
 - **Validate Behavior and Automations**: Checks that expected behavior flows and automations execute with a defined status (success/error).
-- **Validate View Queries**: Ensures that queries return the expected data and allows extraction of data for use in later actions.
+- **Validate [[View]] Queries**: Ensures that queries return the expected data and allows extraction of data for use in later actions.
 - **Define Variables**: Sets variables for use in other actions within the scenario.
 
 ## GraphQL Queries and Mutations
@@ -32,7 +32,7 @@ Tests provide a pass or fail result based on:
 
 - **Unexpected Behavior**: Deviation from the expected behavior.
 - **Data Results**: Mismatch in expected data results.
-- **Coverage**: Low event or view coverage, indicating insufficient test coverage.
+- **Coverage**: Low event or [[view]] coverage, indicating insufficient test coverage.
 
 A JSON report is generated and stored in the database. If a test fails, the application will not be deployed to production.
 
