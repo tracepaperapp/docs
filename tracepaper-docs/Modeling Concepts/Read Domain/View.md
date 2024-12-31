@@ -1,3 +1,4 @@
+
 Views are defined entities that represent a set of attributes and may contain transformation of data from underlying [[Aggregate|aggregates]] (data sources). Each view is named and configured with specific parameters.
 
 ## Fields

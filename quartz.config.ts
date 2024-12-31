@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "tracepaper.draftsman.io/docs",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     generateSocialImages: false,
@@ -30,26 +30,26 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#f9fcfc", // Lichte teal-achtige achtergrond
+          lightgray: "#d6f0f0", // Subtiele achtergrondkleur
+          gray: "#5a9a9a", // Neutrale teal voor tekst en elementen
+          darkgray: "#286666", // Donkere teal voor kopteksten
+          dark: "#004c4c", // Diepe teal voor sterke contrasten
+          secondary: "#007373", // Secundaire teal voor accenten
+          tertiary: "#20B2AA", // Lichte teal voor extra accenten
+          highlight: "rgba(0, 115, 115, 0.25)", // Teal-highlight met meer dekking
+          textHighlight: "#cce4e4", // Contrastvolle achtergrond voor tekstmarkering
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#102525", // Donkere teal als subtiele achtergrond
+          lightgray: "#1a4b4b", // Contrasterende grijstint
+          gray: "#317f7f", // Neutrale teal voor tekst en elementen
+          darkgray: "#63b3b3", // Lichte teal voor sterke contrasten
+          dark: "#a8dede", // Helder teal voor tekst
+          secondary: "#20B2AA", // Lichte teal voor accenten
+          tertiary: "#007373", // Donkere teal voor kopteksten en accenten
+          highlight: "rgba(32, 178, 170, 0.3)", // Transparante teal-highlight
+          textHighlight: "#8fd7d7", // Contrasterende achtergrond voor tekstmarkering
         },
       },
     },

@@ -51,7 +51,7 @@ This entire model is described in our [[Domain Specific Language]] as **8,698 li
 
 ## "This all looks very complex"
 
-Yes, because it is. A lot of the complexity stems from our choice to optimize for a [[Serverless Architecture]] to reduce runtime costs and operational overhead. Read [[01 Introduction|The Story Behind Tracepaper]] to understand how we came to the Tracepaper Architecture.
+Yes, because it is. A lot of the complexity stems from our choice to optimize for a [[Serverless Architecture]] to reduce runtime costs and operational overhead. Read [[The Story Behind Tracepaper|The Story Behind Tracepaper]] to understand how we came to the Tracepaper Architecture.
 
 ### Cost estimator
 
