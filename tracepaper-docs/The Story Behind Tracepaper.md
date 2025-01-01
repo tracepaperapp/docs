@@ -9,7 +9,7 @@ Creating a SaaS-worthy product is an ambition many of us share. The idea of buil
 
 When I first set out to build a SaaS product, my focus was clear: I needed something that would meet the demands of modern users while staying within the constraints of my limited time and budget. **Serverless technology** seemed like the obvious choice. With AWS’s pay-as-you-go model, I could avoid the upfront costs of infrastructure. Even better, serverless promised scalability and robustness, ensuring my product could grow alongside its users.
 
-At first, it felt like I had found the perfect tool. But as I dug deeper, I started encountering problems I hadn’t anticipated. Serverless requires a shift in thinking. Instead of worrying about servers, I found myself diving into the intricacies of distributed systems—things like event-driven architecture, retries, eventual consistency, and handling cold starts. What was supposed to make my life easier was starting to feel overwhelming.
+At first, it felt like I had found the perfect tool. But as I dug deeper, I started encountering problems I hadn’t anticipated. [[What Serverless Solves – and What It Introduces|Serverless requires a shift in thinking.]] Instead of worrying about servers, I found myself diving into the intricacies of distributed systems—things like event-driven architecture, retries, eventual consistency, and handling cold starts. What was supposed to make my life easier was starting to feel overwhelming.]
 
 This was the first turning point: realizing that **serverless solved infrastructure problems but shifted the focus to distributed system design**, increasing cognitive load. For someone trying to build something meaningful on a part-time schedule, this complexity was daunting.
 
