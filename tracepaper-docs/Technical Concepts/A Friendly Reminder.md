@@ -44,7 +44,7 @@ This entire model is described in our [[Domain Specific Language]] as **8,698 li
 - **3,039 lines of Quality Gate instructions**: Representing the 22 test scenarios.
 
 > [!info] Nuance
-> Since we use a [[Code Generator|code generator]], we prioritize **readability** over strict deduplication.  
+> Since we use a [[Why Tracepaper Uses a Code Generator Instead of Runtime Interpretation|code generator]], we prioritize **readability** over strict deduplication.  
 > While professional development might produce fewer lines of code, it often requires a team with a much broader skill set.
 
 ---

@@ -9,7 +9,7 @@ Creating a SaaS-worthy product is an ambition many of us share. The idea of buil
 
 When I first set out to build a SaaS product, my focus was clear: I needed something that would meet the demands of modern users while staying within the constraints of my limited time and budget. **Serverless technology** seemed like the obvious choice. With AWS’s pay-as-you-go model, I could avoid the upfront costs of infrastructure. Even better, serverless promised scalability and robustness, ensuring my product could grow alongside its users.
 
-At first, it felt like I had found the perfect tool. But as I dug deeper, I started encountering problems I hadn’t anticipated. [[What Serverless Solves – and What It Introduces|Serverless requires a shift in thinking.]] Instead of worrying about servers, I found myself diving into the intricacies of distributed systems—things like event-driven architecture, retries, eventual consistency, and handling cold starts. What was supposed to make my life easier was starting to feel overwhelming.]
+At first, it felt like I had found the perfect tool. But as I dug deeper, I started encountering problems I hadn’t anticipated. [[What Serverless Solves – and What It Introduces|Serverless requires a shift in thinking.]] Instead of worrying about servers, I found myself diving into the intricacies of distributed systems—things like event-driven architecture, retries, eventual consistency, and handling cold starts. What was supposed to make my life easier was starting to feel overwhelming.
 
 This was the first turning point: realizing that **serverless solved infrastructure problems but shifted the focus to distributed system design**, increasing cognitive load. For someone trying to build something meaningful on a part-time schedule, this complexity was daunting.
 
@@ -29,6 +29,7 @@ I began experimenting with the idea of using a **model** as the primary artifact
 - Changes to the application would always flow through the model, ensuring consistency and making the system easier to reason about.
 
 This was the seed that eventually grew into **Tracepaper**. At its core, Tracepaper is a code generator that takes a model and produces a deployable serverless application. It doesn’t eliminate all the challenges of serverless development, but it significantly lowers the barriers, allowing developers to focus on their domain rather than the underlying infrastructure.
+[[Why Tracepaper Uses a Code Generator Instead of Runtime Interpretation]].
 
 ## Iterating Toward a Solution
 
@@ -37,6 +38,8 @@ Of course, the journey didn’t end there. Building Tracepaper was itself an ite
 One of the key decisions was making the model the **single source of truth**. If you want to change the behavior of your application, you don’t edit the generated code—you edit the model. This ensures that the model and code remain in sync, reducing the risk of divergence.
 
 This approach wasn’t without its trade-offs. It required rethinking how development workflows should look. But it also brought clarity: by focusing on the model, we could shift our energy away from the technical noise and toward the functional domain.
+
+But we had selected a complicated deployment model --> Model concepten moeten matchen met de concerns. Data flow / control flow
 
 ## What Tracepaper Became
 
