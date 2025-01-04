@@ -1,7 +1,8 @@
-When designing Tracepaper, we faced a fundamental architectural decision: Should we use **runtime interpretation** of the model like platforms such as Mulesoft (the only one I have hands-on experience with) or generate code from the model (pre-compilation)? After careful consideration, we chose the code generation approach. This decision was driven by several key factors:
+When designing Tracepaper, we faced a fundamental architectural decision: Should we use **runtime interpretation** of the model like platforms such as Mulesoft (not to single them out, but it is the only low-code platform I have hands-on experience with) or generate code from the model (pre-compilation)? After careful consideration, we chose the code generation approach. This decision was driven by several key factors:
+
+![[story-Code Generator.drawio.png]]
 
 ---
-
 ### **1. Performance and Efficiency**
 - **Code generation** produces optimized, deployable code that runs natively on the chosen runtime environment (e.g., AWS Lambda).  
 - Unlike runtime interpretation, which introduces an additional layer for reading and executing the model, the generated code is lightweight and efficient, minimizing latency and resource usage.
@@ -23,7 +24,8 @@ When designing Tracepaper, we faced a fundamental architectural decision: Should
 ---
 
 ### **4. Avoiding the Pitfalls of No-Code**
-While no-code platforms aim to simplify development, they often fall short for complex, scalable systems. Code generation bridges this gap by providing:
+While no-code platforms aim to simplify development, they often fall short for complex systems when used outside the design’s intended use cases.
+Code generation bridges this gap by providing:
 - **Flexibility:** No-code tools often restrict advanced customization, while generated code can be extended directly via Python files as part of the model.
 - **Transparency:** No-code solutions can hide behavior behind proprietary layers, making debugging and extensions difficult. In contrast, Tracepaper generates fully readable and modifiable code.
 - **Ownership:** The generated code is fully yours to maintain, even if you decide to move away from Tracepaper and adopt a pro-code development flow.
@@ -35,6 +37,18 @@ Tracepaper's code generator outputs **Python code** as the core language, which 
 - **Readability:** Python's clean and intuitive syntax ensures the generated code is accessible to a wide range of developers.
 - **Ecosystem:** Python's extensive libraries and tools accelerate development and integration.
 - **Extensibility:** Python allows developers to extend the generated code directly within the model, maintaining the single source of truth.
+
+![[story-Languages.drawio.png]]
+
+We considered other languages, such as Java and Node.js, but both have a steeper learning curve, making them less suitable for our goals. Simplicity is one of our key optimization objectives, as we believe that choosing not to write code yourself doesn’t mean you shouldn’t care about it. You should always be able to understand and explore the inner workings of your app if you wish. Therefore, ensuring that the learning curve remains manageable is a top priority.
+
+Rust was briefly considered for its [low energy consumption](https://thenewstack.io/which-programming-languages-use-the-least-electricity/), which aligns with sustainability and cost efficiency. However, it didn’t meet our other goals, so the idea was discarded almost immediately after it was conceived.
+
+At first glance, it might seem counterintuitive that we chose CloudFormation for our [[Infrastructure as Code]] (IaC) instead of the Python AWS Cloud Development Kit (CDK). The CDK is a powerful tool, generating CloudFormation just in time, making it ideal for pro-code environments where you develop and maintain IaC yourself.
+
+However, in a low-code context, where IaC is not directly developed or maintained, the verbosity and declarative nature of CloudFormation make it easier to understand how the model maps to code and runtime.
+
+While we refer to CloudFormation, we actually use a superset called SAM ([Serverless Application Model](https://aws.amazon.com/serverless/sam/)). SAM reduces the verbosity of pure CloudFormation by offering useful abstractions, while still retaining enough transparency to ensure clarity.
 
 ---
 

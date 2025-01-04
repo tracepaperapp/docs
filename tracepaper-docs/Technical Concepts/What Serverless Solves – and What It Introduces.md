@@ -1,4 +1,4 @@
-When transitioning to **serverless architecture**, it’s easy to focus on the immediate benefits: no need to manage servers, scalability out of the box, and cost-efficiency through "scale to zero." However, serverless also introduces a **fundamental shift** in how you think about and design your systems. 
+When transitioning to **[[Serverless Architecture]]**, it’s easy to focus on the immediate benefits: no need to manage servers, scalability out of the box, and cost-efficiency through "scale to zero." However, serverless also introduces a **fundamental shift** in how you think about and design your systems. 
 
 The diagram below illustrates the same application deployed using three different models: a monolith, microservices, and serverless. While all three models retain the same functional decomposition (simple interfaces between components), their deployment approaches significantly impact complexity, runtime control, and cognitive load.
 
@@ -26,7 +26,6 @@ While serverless excels at reducing operational overhead and offering near-infin
 - **Distributed systems design:** Understanding retries, eventual consistency, and asynchronous workflows.
 - **Cold starts:** Functions that haven’t been invoked recently may take longer to execute.
 - **Event-driven complexity:** Tracing and debugging across multiple independently triggered functions can be daunting.
-- **Vendor lock-in:** Reliance on serverless offerings (e.g., AWS Lambda) makes migration challenging.
 
 ---
 
