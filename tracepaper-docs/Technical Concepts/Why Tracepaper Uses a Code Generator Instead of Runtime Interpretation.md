@@ -1,4 +1,4 @@
-When designing Tracepaper, we faced a fundamental architectural decision: Should we use **runtime interpretation** of the model like platforms such as Mulesoft (not to single them out, but it is the only low-code platform I have hands-on experience with) or generate code from the model (pre-compilation)? After careful consideration, we chose the code generation approach. This decision was driven by several key factors:
+When designing Tracepaper, we faced a fundamental architectural decision: Should we use **runtime interpretation** of the model like platforms such as Mulesoft (not to single them out, but it is the only low-code platform I have hands-on experience with) or generate code from the model (pre-compilation)? After careful consideration, we chose the code generation approach. This decision was driven by several key factors in the context of serverless deployments:
 
 ![[story-Code Generator.drawio.png]]
 
@@ -68,9 +68,10 @@ The generated code ensures:
 ### **7. Zero-Touch Deployment**
 The code generator integrates seamlessly with Tracepaper’s zero-touch deployment pipeline:
 - **Staging and Production:** Generated code is automatically deployed to both staging and production environments.
+- **Black-Box API Testing:** Before deployment to production, a black-box API test suite runs against the staging environment to validate the functionality and ensure alignment with the expected behavior.
+- **Go/No-Go Quality Gate:** The pipeline includes an additional quality gate based on the API test results, ensuring that only passing updates proceed to production.
 - **Continuous Updates:** As models evolve, the generator ensures that updated code is deployed without disrupting existing systems.
 - This pipeline supports rapid iterations while maintaining alignment between the model and its runtime output.
-
 ---
 
 ### **8. Evolvability and Long-Term Support**

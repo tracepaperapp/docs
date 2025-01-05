@@ -45,6 +45,7 @@ But we selected a complex deployment model, and our modeling concepts must align
 **Looking at AWS's philosophy for distributed systems:**  
 1. **Distributed systems should be asynchronous, hence event-driven.**  
 2. **A resilient and evolvable distributed system is composed of small, isolated components.**  
+
 We achieve the second principle by connecting [[Serverless Architecture|serverless]] components like **AppSync**, **EventBridge**, **Lambda**, and **DynamoDB**, which form the backbone of our architecture.  
 
 The most significant technical shift is decoupling the control flow from the data flow by transitioning from a direct call/request-response model to a publish/subscribe model, making the entire system 100% event-driven in alignment with the first principle.  
